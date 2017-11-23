@@ -22,6 +22,8 @@ $ git clone -b docker-legacy --depth=1 https://github.com/yeasy/docker_practice.
 
 $ cd docker_practice
 
+$ docker-compose pull
+
 $ docker-compose up
 ```
 
