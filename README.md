@@ -10,22 +10,10 @@
 
 本开源书籍既适用于具备基础 Linux 知识的 Docker 初学者，也希望可供理解原理和实现的高级用户参考。同时，书中给出的实践案例，可供在进行实际部署时借鉴。前六章为基础内容，供用户理解 Docker 的基本概念和操作；7 ~ 9 章介绍一些高级操作；第 10 章给出典型的应用场景和实践案例；11、12 章介绍关于 Docker 安全和实现技术等高级话题。后续章节则分别介绍一些相关的热门开源项目。
 
-在线阅读：[GitBook](https://www.gitbook.io/book/yeasy/docker_practice) 或 [Github](https://github.com/yeasy/docker_practice/blob/master/SUMMARY.md)。
-
+* 在线阅读：[GitBook](https://www.gitbook.io/book/yeasy/docker_practice) 或 [Github](https://github.com/yeasy/docker_practice/blob/docker-legacy/SUMMARY.md)。
+* 离线阅读[https://github.com/yeasy/docker_practice/wiki/%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3]。
 * pdf 版本 [下载](https://www.gitbook.com/download/pdf/book/yeasy/docker_practice)
 * epub 版本 [下载](https://www.gitbook.com/download/epub/book/yeasy/docker_practice)
-
-离线阅读：
-
-```bash
-$ git clone -b docker-legacy --depth=1 https://github.com/yeasy/docker_practice.git
-
-$ cd docker_practice
-
-$ docker-compose pull
-
-$ docker-compose up
-```
 
 Docker 自身仍在快速发展中，生态环境也在蓬勃成长。欢迎参与维护项目：[如何贡献](contribute.md)。
 
