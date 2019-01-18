@@ -8,11 +8,11 @@
 
 Docker CE 支持以下版本的 [Ubuntu](https://www.ubuntu.com/server) 操作系统：
 
-* Artful 17.10 (Docker CE 17.11 Edge +)
+* Bionic 18.04 (LTS)
 * Xenial 16.04 (LTS)
-* Trusty 14.04 (LTS)
+* Trusty 14.04 (LTS) (Docker CE v18.06 及以下版本)
 
-Docker CE 可以安装在 64 位的 x86 平台或 ARM 平台上。Ubuntu 发行版中，LTS（Long-Term-Support）长期支持版本，会获得 5 年的升级维护支持，这样的版本会更稳定，因此在生产环境中推荐使用 LTS 版本,当前最新的 LTS 版本为 Ubuntu 16.04。
+Docker CE 可以安装在 64 位的 x86 平台或 ARM 平台上。Ubuntu 发行版中，LTS（Long-Term-Support）长期支持版本，会获得 5 年的升级维护支持，这样的版本会更稳定，因此在生产环境中推荐使用 LTS 版本。
 
 #### 卸载旧版本
 
@@ -84,7 +84,7 @@ $ sudo add-apt-repository \
 #    stable"    
 ```
 
->以上命令会添加稳定版本的 Docker CE APT 镜像源，如果需要最新或者测试版本的 Docker CE 请将 stable 改为 edge 或者 test。从 Docker 17.06 开始，edge test 版本的 APT 镜像源也会包含稳定版本的 Docker。
+>以上命令会添加稳定版本的 Docker CE APT 镜像源，如果需要测试或每日构建版本的 Docker CE 请将 stable 改为 test 或者 nightly。
 
 #### 安装 Docker CE
 
@@ -145,8 +145,8 @@ $ docker run hello-world
 
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
-ca4f61b1923c: Pull complete
-Digest: sha256:be0cd392e45be79ffeffa6b05338b98ebb16c87b255f48e297ec7f98e123905c
+d1725b59e92d: Pull complete
+Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
 Status: Downloaded newer image for hello-world:latest
 
 Hello from Docker!
@@ -165,18 +165,18 @@ To try something more ambitious, you can run an Ubuntu container with:
  $ docker run -it ubuntu bash
 
 Share images, automate workflows, and more with a free Docker ID:
- https://cloud.docker.com/
+ https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/engine/userguide/
+ https://docs.docker.com/get-started/
 ```
 
 若能正常输出以上信息，则说明安装成功。
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 [国内镜像加速](mirror.md)。
+如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker [国内镜像加速](mirror.md)。
 
 ### 参考文档
 
-* [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/)
+* [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)

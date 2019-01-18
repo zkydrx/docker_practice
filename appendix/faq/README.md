@@ -12,13 +12,13 @@
 
 ### 本地的镜像文件都存放在哪里？
 
-答：与 Docker 相关的本地资源都存放在 `/var/lib/docker/` 目录下，以 `aufs` 文件系统为例，其中 `container` 目录存放容器信息，`graph` 目录存放镜像信息，`aufs` 目录下存放具体的镜像层文件。
+答：与 Docker 相关的本地资源默认存放在 `/var/lib/docker/` 目录下，以 `aufs` 文件系统为例，其中 `container` 目录存放容器信息，`graph` 目录存放镜像信息，`aufs` 目录下存放具体的镜像层文件。
 
 ### 构建 Docker 镜像应该遵循哪些原则？
 
 答：整体原则上，尽量保持镜像功能的明确和内容的精简，要点包括
 
-* 尽量选取满足需求但较小的基础系统镜像，例如大部分时候可以选择 debian:wheezy 或 debian:jessie 镜像，仅有不足百兆大小；
+* 尽量选取满足需求但较小的基础系统镜像，例如大部分时候可以选择 debian:wheezy 或 debian:stretch 镜像，仅有不足百兆大小；
 
 * 清理编译生成文件、安装包的缓存等临时文件；
 
@@ -30,7 +30,7 @@
 
 * 使用 Dockerfile 创建镜像时候要添加 .dockerignore 文件或使用干净的工作目录。
 
-更多内容请查看 [Dockerfile 最佳实践](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)
+更多内容请查看 [Dockerfile 最佳实践](../best_practices.md)
 
 ### 碰到网络问题，无法 pull 镜像，命令行指定 http_proxy 无效？
 
@@ -44,7 +44,7 @@
 
 ### 如何停止所有正在运行的容器？
 
-答：可以使用 `docker kill $(docker container ls -q)` 命令。
+答：可以使用 `docker stop $(docker container ls -q)` 命令。
 
 ### 如何批量清理已经停止的容器？
 
@@ -82,7 +82,7 @@ $ docker run --network=my-net --ip=172.25.3.3 -itd --name=my-container busybox
 
 ### 可以在一个容器中同时运行多个应用进程么？
 
-答：一般并不推荐在同一个容器内运行多个应用进程。如果有类似需求，可以通过一些额外的进程管理机制，比如 `supervisord` 来管理所运行的进程。可以参考 https://docs.docker.com/engine/admin/multi-service_container/ 。
+答：一般并不推荐在同一个容器内运行多个应用进程。如果有类似需求，可以通过一些额外的进程管理机制，比如 `supervisord` 来管理所运行的进程。可以参考 https://docs.docker.com/config/containers/multi-service_container/ 。
 
 ### 如何控制容器占用系统资源（CPU、内存）的份额？
 
@@ -105,7 +105,7 @@ $ docker run --network=my-net --ip=172.25.3.3 -itd --name=my-container busybox
 
 ### 如何更改 Docker 的默认存储位置？
 
-答：Docker 的默认存储位置是 `/var/lib/docker`，如果希望将 Docker 的本地文件存储到其他分区，可以使用 Linux 软连接的方式来完成，或者在启动 daemon 时通过 `-g` 参数指定。
+答：Docker 的默认存储位置是 `/var/lib/docker`，如果希望将 Docker 的本地文件存储到其他分区，可以使用 Linux 软连接的方式来完成，或者在启动 daemon 时通过 `-g` 参数指定，或者修改配置文件 `/etc/docker/daemon.json` 的 "data-root" 项 。可以使用 `docker system info | grep "Root Dir"` 查看当前使用的存储位置。
 
 例如，如下操作将默认存储位置迁移到 /storage/docker。
 
@@ -126,7 +126,7 @@ lrwxrwxrwx. 1 root root 15 11月 17 13:43 docker -> /storage/docker
 [root@s26 lib]# service docker start
 ```
 
-### 使用内存和 swap 限制启动容器时候报警告：“WARNING: Your kernel does not support cgroup swap limit. WARNING: Your kernel does not support swap limit capabilities. Limitation discarded.”？
+### 使用内存和 swap 限制启动容器时候报警告："WARNING: Your kernel does not support cgroup swap limit. WARNING: Your kernel does not support swap limit capabilities. Limitation discarded."？
 
 答：这是因为系统默认没有开启对内存和 swap 使用的统计功能，引入该功能会带来性能的下降。要开启该功能，可以采取如下操作：
 

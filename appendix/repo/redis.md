@@ -1,10 +1,10 @@
-## [Redis](https://store.docker.com/images/redis/)
+## [Redis](https://hub.docker.com/_/redis/)
 
 ### 基本信息
 
 [Redis](https://en.wikipedia.org/wiki/Redis) 是开源的内存 Key-Value 数据库实现。
 
-该仓库位于 https://store.docker.com/images/redis/ ，提供了 Redis 3.x ~ 4.x 各个版本的镜像。
+该仓库位于 `https://hub.docker.com/_/redis/` ，提供了 Redis 3.x ~ 5.x 各个版本的镜像。
 
 ### 使用方法
 
@@ -14,7 +14,7 @@
 $ docker run --name some-redis -d redis
 ```
 
-另外还可以启用 [持久存储](http://redis.io/topics/persistence)。
+另外还可以启用 [持久存储](https://redis.io/topics/persistence)。
 
 ```bash
 $ docker run --name some-redis -d redis redis-server --appendonly yes

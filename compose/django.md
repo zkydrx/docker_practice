@@ -8,7 +8,7 @@
 
 第一步，因为应用将要运行在一个满足所有环境依赖的 Docker 容器里面，那么我们可以通过编辑 `Dockerfile` 文件来指定 Docker 容器要安装内容。内容如下：
 
-```docker
+```dockerfile
 FROM python:3
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
@@ -55,7 +55,7 @@ services:
 $ docker-compose run web django-admin.py startproject django_example .
 ```
 
-Compose 会先使用 `Dockerfile` 为 web 服务创建一个镜像，接着使用这个镜像在容器里运行 `django-admin.py startproject composeexample` 指令。
+Compose 会先使用 `Dockerfile` 为 web 服务创建一个镜像，接着使用这个镜像在容器里运行 `django-admin.py startproject django_example` 指令。
 
 这将在当前目录生成一个 `Django` 应用。
 
@@ -84,7 +84,7 @@ DATABASES = {
 }
 ```
 
-这些信息是在 [postgres](https://store.docker.com/images/postgres/) 镜像固定设置好的。然后，运行 `docker-compose up` ：
+这些信息是在 [postgres](https://hub.docker.com/_/postgres/) 镜像固定设置好的。然后，运行 `docker-compose up` ：
 
 ```bash
 $ docker-compose up

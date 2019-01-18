@@ -1,6 +1,6 @@
 ## 联合文件系统
 
-联合文件系统（[UnionFS](http://en.wikipedia.org/wiki/UnionFS)）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。
+联合文件系统（[UnionFS](https://en.wikipedia.org/wiki/UnionFS)）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。
 
 联合文件系统是 Docker 镜像的基础。镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。
 
@@ -14,9 +14,9 @@ Docker 目前支持的联合文件系统包括 `OverlayFS`, `AUFS`, `Btrfs`, `VF
 
 |Linux 发行版 |	Docker 推荐使用的存储驱动 |
 | :--        | :--                     |
-|Docker CE on Ubuntu |	`aufs`, `devicemapper`, `overlay2` (Ubuntu 14.04.4 +, 16.04 +), `overlay`, `zfs`, `vfs` |
-|Docker CE on Debian |	`aufs`, `devicemapper`, `overlay2` (Debian Stretch), `overlay`, `vfs` |
-|Docker CE on CentOS |	`devicemapper`, `vfs` |
-|Docker CE on Fedora |	`devicemapper`, `overlay2` (Fedora 26 +), `overlay` (实验性支持), `vfs` |
+|Docker CE on Ubuntu |	`overlay2` (Ubuntu 14.04.4 +, 16.04 +) |
+|Docker CE on Debian |	`overlay2` (Debian Stretch), `aufs`, `devicemapper` |
+|Docker CE on CentOS |	`overlay2`  |
+|Docker CE on Fedora |	`overlay2`  |
 
 在可能的情况下，推荐使用 `overlay2` 存储驱动，`overlay2` 是目前 Docker 默认的存储驱动，以前则是 `aufs`。你可以通过配置来使用以上提到的其他类型的存储驱动。

@@ -10,9 +10,9 @@ Docker CE 支持以下版本的 [Raspbian](https://www.raspberrypi.org/downloads
 
 * Raspbian Stretch
 
-* Raspbian Jessie
+* Raspbian Jessie (Docker CE v18.06 及以下版本)
 
-*注：* `Raspbian` 是树莓派基金会为树莓派卡片电脑设计的 Linux 发行版，其基于 Debian。
+*注：* `Raspbian` 是树莓派的开发与维护机构 [树莓派基金会](http://www.raspberrypi.org/) 推荐用于树莓派的首选系统，其基于 `Debian`。
 
 ### 使用 APT 安装
 
@@ -58,7 +58,7 @@ $ sudo add-apt-repository \
 #    stable"    
 ```
 
->以上命令会添加稳定版本的 Docker CE APT 源，如果需要最新版本的 Docker CE 请将 stable 改为 edge 或者 test。从 Docker 17.06 开始，edge test 版本的 APT 源也会包含稳定版本的 Docker CE。
+>以上命令会添加稳定版本的 Docker CE APT 源，如果需要测试或每日构建版本的 Docker CE 请将 stable 改为 test 或者 nightly。
 
 #### 安装 Docker CE
 
@@ -113,8 +113,8 @@ $ docker run arm32v7/hello-world
 
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
-ca4f61b1923c: Pull complete
-Digest: sha256:be0cd392e45be79ffeffa6b05338b98ebb16c87b255f48e297ec7f98e123905c
+d1725b59e92d: Pull complete
+Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
 Status: Downloaded newer image for hello-world:latest
 
 Hello from Docker!
@@ -133,10 +133,10 @@ To try something more ambitious, you can run an Ubuntu container with:
  $ docker run -it ubuntu bash
 
 Share images, automate workflows, and more with a free Docker ID:
- https://cloud.docker.com/
+ https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/engine/userguide/
+ https://docs.docker.com/get-started/
 ```
 
 若能正常输出以上信息，则说明安装成功。
@@ -145,4 +145,4 @@ For more examples and ideas, visit:
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 [国内镜像加速](mirror.md)。
+如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker [国内镜像加速](mirror.md)。

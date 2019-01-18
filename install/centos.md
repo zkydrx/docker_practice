@@ -51,16 +51,16 @@ $ sudo yum-config-manager \
 #     https://download.docker.com/linux/centos/docker-ce.repo    
 ```
 
-如果需要最新版本的 Docker CE 请使用以下命令：
-
-```bash
-$ sudo yum-config-manager --enable docker-ce-edge
-```
-
 如果需要测试版本的 Docker CE 请使用以下命令：
 
 ```bash
 $ sudo yum-config-manager --enable docker-ce-test
+```
+
+如果需要每日构建版本的 Docker CE 请使用以下命令：
+
+```bash
+$ sudo yum-config-manager --enable docker-ce-nightly
 ```
 
 #### 安装 Docker CE
@@ -115,8 +115,8 @@ $ docker run hello-world
 
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
-ca4f61b1923c: Pull complete
-Digest: sha256:be0cd392e45be79ffeffa6b05338b98ebb16c87b255f48e297ec7f98e123905c
+d1725b59e92d: Pull complete
+Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
 Status: Downloaded newer image for hello-world:latest
 
 Hello from Docker!
@@ -135,21 +135,21 @@ To try something more ambitious, you can run an Ubuntu container with:
  $ docker run -it ubuntu bash
 
 Share images, automate workflows, and more with a free Docker ID:
- https://cloud.docker.com/
+ https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/engine/userguide/
+ https://docs.docker.com/get-started/
 ```
 
 若能正常输出以上信息，则说明安装成功。
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 [国内镜像加速](mirror.md)。
+如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker [国内镜像加速](mirror.md)。
 
 ### 添加内核参数
 
-默认配置下，如果在 CentOS 使用 Docker CE 看到下面的这些警告信息：
+如果在 CentOS 使用 Docker CE 看到下面的这些警告信息：
 
 ```bash
 WARNING: bridge-nf-call-iptables is disabled
@@ -173,4 +173,4 @@ $ sudo sysctl -p
 
 ### 参考文档
 
-* [Docker 官方 CentOS 安装文档](https://docs.docker.com/engine/installation/linux/docker-ce/centos/)。
+* [Docker 官方 CentOS 安装文档](https://docs.docker.com/install/linux/docker-ce/centos/)。

@@ -1,9 +1,5 @@
 ## 挂载主机目录
 
-### 选择 -v 还是 -–mount 参数
-
-Docker 新用户应该选择 `--mount` 参数，经验丰富的 Docker 使用者对 `-v` 或者 `--volume` 已经很熟悉了，但是推荐使用 `--mount` 参数。
-
 ### 挂载一个主机目录作为数据卷
 
 使用 `--mount` 标记可以指定挂载一个本地主机的目录到容器中去。
@@ -68,7 +64,7 @@ $ docker inspect web
 $ docker run --rm -it \
    # -v $HOME/.bash_history:/root/.bash_history \
    --mount type=bind,source=$HOME/.bash_history,target=/root/.bash_history \
-   ubuntu:17.10 \
+   ubuntu:18.04 \
    bash
 
 root@2affd44b4667:/# history

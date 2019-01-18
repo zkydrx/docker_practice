@@ -8,7 +8,7 @@
 
 压缩包可以是本地文件、远程 Web 文件，甚至是从标准输入中得到。压缩包将会在镜像 `/` 目录展开，并直接作为镜像第一层提交。
 
-比如我们想要创建一个 [OpenVZ](https://openvz.org/Main_Page) 的 Ubuntu 14.04 [模板](https://openvz.org/Download/template/precreated)的镜像：
+比如我们想要创建一个 [OpenVZ](https://openvz.org) 的 Ubuntu 14.04 [模板](https://openvz.org/Download/template/precreated)的镜像：
 
 ```bash
 $ docker import \
@@ -38,7 +38,7 @@ f477a6e18e98        About a minute ago                       214.9 MB           
 
 ### `docker save` 和 `docker load`
 
-Docker 还提供了 `docker load` 和 `docker save` 命令，用以将镜像保存为一个 `tar` 文件，然后传输到另一个位置上，再加载进来。这是在没有 Docker Registry 时的做法，现在已经不推荐，镜像迁移应该直接使用 Docker Registry，无论是直接使用 Docker Hub 还是使用内网私有 Registry 都可以。
+Docker 还提供了 `docker save` 和 `docker load` 命令，用以将镜像保存为一个文件，然后传输到另一个位置上，再加载进来。这是在没有 Docker Registry 时的做法，现在已经不推荐，镜像迁移应该直接使用 Docker Registry，无论是直接使用 Docker Hub 还是使用内网私有 Registry 都可以。
 
 #### 保存镜像
 
@@ -53,6 +53,18 @@ alpine              latest              baa5d63471ea        5 weeks ago         
 ```
 
 保存镜像的命令为：
+
+```bash
+$ docker save alpine -o filename
+$ file filename
+filename: POSIX tar archive
+```
+
+这里的 filename 可以为任意名称甚至任意后缀名，但文件的本质都是归档文件
+
+**注意：如果同名则会覆盖（没有警告）**
+
+若使用 `gzip` 压缩：
 
 ```bash
 $ docker save alpine | gzip > alpine-latest.tar.gz
